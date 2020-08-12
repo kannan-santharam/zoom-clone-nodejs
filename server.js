@@ -20,7 +20,11 @@ io.on('connection', socket =>{
         console.log(roomId,userId);
         socket.join(roomId);
         socket.to(roomId).broadcast.emit('user-connected', userId);
-    })
+        socket.on('disconnect',()=>{
+            socket.to(roomId).broadcast.emit("user-disconnect",userId);
+        })
+    });
+   
 })
 
 server.listen(3000);
