@@ -30,9 +30,9 @@ userPeer.on("open", id => {
 
 socket.on('user-disconnect', userId => {
     if(peers[userId]){
-        peers[userId].close()
+        peers[userId].close();
     }
-    console.log('user-disconnected ', userId);
+    console.log('user-disconnected ', peers[userId]);
 })
 function connectToNewUser(userId, stream){
     const callUser = userPeer.call(userId,stream);
